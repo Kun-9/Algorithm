@@ -48,3 +48,6 @@ gradle/
 gradlew
 gradlew.bat
 settings.gradle.kts
+
+java/*
+!java/**/

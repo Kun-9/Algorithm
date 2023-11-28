@@ -49,5 +49,5 @@ gradlew
 gradlew.bat
 settings.gradle.kts
 
-java/*
-!java/**/
+src/main/java/*
+!src/main/java/**/

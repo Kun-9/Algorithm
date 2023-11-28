@@ -1,4 +1,4 @@
-package org.DFS;
+package BFS;
 
 public class Main {
 	public static void main(String[] args) {

@@ -10,12 +10,10 @@ public class Main {
 	static int[] moveX = {-1, 1, 0, 0};
 	static int[] moveY = {0, 0, -1, 1};
 
-
 	public static void main(String[] args) throws IOException {
-
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+
 		N = Integer.parseInt(st.nextToken());
 		M = Integer.parseInt(st.nextToken());
 
@@ -47,8 +45,8 @@ public class Main {
 
 			// 분리되지 않는 경우
 			if (cnt == 0) {
-				System.out.print(0);
-				return;
+				result = 0;
+				break;
 			}
 
 			result++;
@@ -93,7 +91,6 @@ public class Main {
 			}
 		}
 	}
-
 
 	private static class Info {
 		int x;

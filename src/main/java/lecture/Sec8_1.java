@@ -11,7 +11,6 @@ import java.util.StringTokenizer;
 public class Sec8_1 {
 
 	static boolean ch = false;
-	static int[] check = new int[10000];
 	static int target;
 	static int[] arr;
 

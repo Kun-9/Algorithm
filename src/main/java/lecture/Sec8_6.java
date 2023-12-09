@@ -1,10 +1,14 @@
+package DFS;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
 
-public class Main {
-	// 8_5
+public class Sec8_6 {
+	// 8_6
 
 	static Integer[] arr;
 	static int target;

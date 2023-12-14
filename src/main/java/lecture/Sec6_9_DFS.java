@@ -1,10 +1,12 @@
+package lecture;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.StringTokenizer;
 
-// 좌표 정렬
-public class Main {
+// 잘못된 풀이
+public class Sec6_9_DFS {
 	static int[] arr;
 	static int[] result;
 	static int M, N;

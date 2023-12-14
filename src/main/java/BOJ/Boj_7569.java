@@ -1,53 +1,42 @@
+package BOJ;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
-public class Main {
+public class Boj_7569 {
 
 	static int N, M, H;
 	static int[][][] box;
+	static boolean flag = false;
+
 
 	public static void main(String[] args) throws IOException {
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 
 		M = Integer.parseInt(st.nextToken());
 		N = Integer.parseInt(st.nextToken());
 		H = Integer.parseInt(st.nextToken());
 
-		box = new int[M][N][H];
+		box = new int[N][M][H];
 
 		List<int[]> ripenList = new ArrayList<>();
 
 		for (int h = 0; h < H; h++) {
-			for (int n = 0; n < N; n++) {
+			for (int i = 0; i < N; i++) {
 				StringTokenizer temp = new StringTokenizer(br.readLine(), " ");
-				for (int m = 0; m < M; m++) {
+				for (int j = 0; j < M; j++) {
 					int value = Integer.parseInt(temp.nextToken());
-					if (value == 1) ripenList.add(new int[]{m, n, h});
-					box[m][n][h] = value;
+					if (value == 1) ripenList.add(new int[]{i, j, h});
+					box[i][j][h] = value;
 				}
 			}
 		}
-
 		System.out.println(BFS(ripenList));
 	}
-
-	private static boolean isFinish() {
-		for (int h = 0; h < H; h++) {
-			for (int n = 0; n < N; n++) {
-				for (int m = 0; m < M; m++) {
-					if (box[m][n][h] == 0) return false;
-				}
-			}
-		}
-		return true;
-	}
-
-	static boolean flag = false;
 
 	private static int BFS(List<int[]> list) {
 		if (isFinish()) return 0;
@@ -91,13 +80,24 @@ public class Main {
 
 	private static void validOffer(int m, int n, int h, Queue<int[]> queue) {
 		// 조건 통과하면 queue에 삽입
-		if (!(m < 0 || m >= M || n < 0 || n >= N || h < 0 || h >= H)) {
+		if (!(m < 0 || m >= N || n < 0 || n >= M || h < 0 || h >= H)) {
 			if (box[m][n][h] == 0) {
 				flag = true;
 				box[m][n][h] = 1;
 				queue.offer(new int[]{m, n, h});
 			}
 		}
+	}
+
+	private static boolean isFinish() {
+		for (int h = 0; h < H; h++) {
+			for (int i = 0; i < N; i++) {
+				for (int j = 0; j < M; j++) {
+					if (box[i][j][h] == 0) return false;
+				}
+			}
+		}
+		return true;
 	}
 }
 

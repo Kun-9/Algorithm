@@ -1,7 +1,9 @@
+package sort;
+
 import java.io.IOException;
 
 // 퀵 솔트
-public class Main {
+public class QuickSort {
 	public static void main(String[] args) throws IOException {
 		int[] arr = new int[]{5, 3, 8, 4, 9, 1, 2, 6, 7};
 

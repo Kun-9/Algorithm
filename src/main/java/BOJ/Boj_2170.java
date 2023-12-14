@@ -1,10 +1,14 @@
+package BOJ;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.StringTokenizer;
 
 // 미로 탐색 2178
-public class Main {
+public class Boj_2170 {
 	static int N, M;
 	static int[][] miro, check;
 

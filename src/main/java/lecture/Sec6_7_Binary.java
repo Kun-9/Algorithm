@@ -1,10 +1,12 @@
+package lecture;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.StringTokenizer;
 
 // 좌표 정렬
-public class Main {
+public class Sec6_7_Binary {
 	static int[] arr;
 	static int[] result;
 	static int M, N;

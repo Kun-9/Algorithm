@@ -1,4 +1,4 @@
-package DFS;
+package lecture;
 
 public class SolveTemplate {
 	public static void main(String[] args) {

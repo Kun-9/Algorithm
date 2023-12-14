@@ -8,7 +8,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.StringTokenizer;
 
-public class Sec4_4 {
+
+// 매출액의 종루
+public class Sec4_3 {
 	static int N, M;
 
 	public static void main(String[] args) throws IOException {

@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
-public class dfs_bfs {
+public class Boj_1260 {
 	static int n;
 	static int m;
 	static Map<Integer, List<Integer>> map;

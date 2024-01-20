@@ -1,10 +1,12 @@
+package lecture;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.StringTokenizer;
 
 //
-public class Main {
+public class Sec9_7 {
 	static int find(int target) {
 		if (arr[target] == target) return target;
 		else return arr[target] = find(arr[target]);

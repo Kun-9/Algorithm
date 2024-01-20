@@ -1,10 +1,15 @@
+package lecture;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.StringTokenizer;
 
 // 씨름 선수 Greedy
-public class Main {
+public class Sec9_1 {
 
 	static class Body implements Comparable<Body> {
 

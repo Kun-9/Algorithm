@@ -1,10 +1,12 @@
+package lecture;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
 //
-public class Main {
+public class Sec9_6_Dijstra {
 
 	static class Node implements Comparable<Node> {
 		int value;

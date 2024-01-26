@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
-//
+// 개행이 없는 문자열을 읽고 .으로 시작한다면 멈춰야한다.
 public class Boj_4949 {
 
 

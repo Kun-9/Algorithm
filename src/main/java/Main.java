@@ -3,63 +3,62 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
-//
+// 개행이 없는 문자열을 읽고 .으로 시작한다면 멈춰야한다.
 public class Main {
+
+	static int N, M;
+	static int[] numSet;
+	static ArrayList<Integer>[] list;
 
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		Stack<Character> stack = new Stack<>();
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		N = stoi(st.nextToken());
+		M = stoi(st.nextToken());
 
-		String result = "yes";
-
-
-
-		StringBuilder str = new StringBuilder();
-
-
-		loop:
-		while (true) {
-			char a;
-			while ((a = (char) br.read()) != '\n') {
-				str.append(a);
-				if (str.toString().equals(".")) {
-					break loop;
-				}
-			}
-
-			char[] charArray = str.toString().toCharArray();
-			for (char c : charArray) {
-				if (c == '[' || c == '(') {
-					stack.push(c);
-				} else if (c == ']' || c == ')') {
-					if (stack.isEmpty()) {
-						result = "no";
-						break;
-					}
-
-					if (c == ']') {
-						if (stack.pop() != '[') {
-							result = "no";
-							break;
-						}
-					} else {
-						if (stack.pop() != '(') {
-							result = "no";
-							break;
-						}
-					}
-				}
-			}
-
-			if (!stack.isEmpty()) result = "no";
-			System.out.println(result);
-
-			str.setLength(0);
-			result = "yes";
-			stack.clear();
-
+		numSet = new int[M + 1];
+		list = new ArrayList[N + 1];
+		for (int i = 1; i <= N; i++) {
+			list[i] = new ArrayList<>();
 		}
+
+		for (int i = 1; i <= N; i++) {
+			st = new StringTokenizer(br.readLine());
+			int num = stoi(st.nextToken());
+			for (int j = 0; j < num; j++) {
+				int temp = stoi(st.nextToken());
+				list[i].add(temp);
+				numSet[temp]++;
+			}
+		}
+
+		for (int i = 1; i <= N; i++) {
+			if (isPossible(i)) {
+				System.out.println(1);
+				return;
+			}
+		}
+		System.out.println(0);
+
+	}
+
+	private static boolean isPossible(int index) {
+		boolean flag = true;
+		for (int num : list[index]) {
+			numSet[num]--;
+			if (numSet[num] <= 0) {
+				flag = false;
+			}
+		}
+		for (int num : list[index]) {
+			numSet[num]++;
+		}
+		return flag;
+	}
+
+	private static int stoi(String input) {
+		return Integer.parseInt(input);
 	}
 }
 

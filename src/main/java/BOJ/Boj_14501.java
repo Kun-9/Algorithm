@@ -1,7 +1,9 @@
-import java.io.*;
-import java.util.*;
+package BOJ;
 
-public class Main {
+import java.io.IOException;
+import java.util.Scanner;
+
+public class Boj_14501 {
 	public static void main(String[] args) throws IOException {
 		Scanner sc = new Scanner(System.in);
 		int Case = sc.nextInt();

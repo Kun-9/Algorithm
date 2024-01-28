@@ -4,63 +4,62 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.StringTokenizer;
 
 public class Boj_16960 {
-
-	static int N, M;
-	static int[] numSet;
-	static ArrayList<Integer>[] list;
-
-
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringTokenizer st = new StringTokenizer(br.readLine());
-		N = stoi(st.nextToken());
-		M = stoi(st.nextToken());
 
-		numSet = new int[M + 1];
-		list = new ArrayList[N + 1];
-		for (int i = 1; i <= N; i++) {
-			list[i] = new ArrayList<>();
-		}
+		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 
-		for (int i = 1; i <= N; i++) {
-			st = new StringTokenizer(br.readLine());
-			int num = stoi(st.nextToken());
+		int N = Integer.parseInt(st.nextToken());
+		int M = Integer.parseInt(st.nextToken());
+
+		int[] arrSet = new int[M + 1];
+
+		int result = 0;
+
+		List<List<Integer>> switchList = new ArrayList<>();
+
+		for (int i = 0; i < N; i++) {
+			st = new StringTokenizer(br.readLine(), " ");
+			int num = Integer.parseInt(st.nextToken());
+			List<Integer> list = new ArrayList<>();
+
 			for (int j = 0; j < num; j++) {
-				int temp = stoi(st.nextToken());
-				list[i].add(temp);
-				numSet[temp]++;
+				Integer object = Integer.valueOf(st.nextToken());
+				list.add(object);
+				arrSet[object]++;
+			}
+			switchList.add(list);
+		}
+
+		// 초과된 번호
+		List<Integer> arr = new ArrayList<>();
+
+		for (int i = 1; i < arrSet.length; i++) {
+			if (arrSet[i] > 1) {
+				arr.add(i);
 			}
 		}
 
-		for (int i = 1; i <= N; i++) {
-			if (isPossible(i)) {
-				System.out.println(1);
-				return;
+		for (List<Integer> integers : switchList) {
+			boolean flag = true;
+
+			for (Integer integer : integers) {
+				if (!arr.contains(integer)) {
+					flag = false;
+					break;
+				}
+			}
+
+			if (flag) {
+				result = 1;
+				break;
 			}
 		}
-		System.out.println(0);
 
-	}
-
-	private static boolean isPossible(int index) {
-		boolean flag = true;
-		for (int num : list[index]) {
-			numSet[num]--;
-			if (numSet[num] <= 0) {
-				flag = false;
-			}
-		}
-		for (int num : list[index]) {
-			numSet[num]++;
-		}
-		return flag;
-	}
-
-	private static int stoi(String input) {
-		return Integer.parseInt(input);
+		System.out.print(result);
 	}
 }
-

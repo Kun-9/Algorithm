@@ -3,25 +3,57 @@ import java.util.*;
 
 public class Main {
 	public static void main(String[] args) throws IOException {
-		Scanner sc = new Scanner(System.in);
-		int Case = sc.nextInt();
-		int[] T = new int[Case];
-		int[] P = new int[Case];
-		for(int i=0;i<Case;i++) {
-			T[i]=sc.nextInt();
-			P[i]=sc.nextInt();
-		}
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-		int[] dp = new int[Case+1];
+		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 
-		for(int i=0;i<Case;i++) {
-			if(i+T[i]<=Case) {
-				dp[i+T[i]]=Math.max(dp[i+T[i]],dp[i]+P[i]);
+		int N = Integer.parseInt(st.nextToken());
+		int M = Integer.parseInt(st.nextToken());
+
+		int[] arrSet = new int[M + 1];
+
+		int result = 0;
+
+		List<List<Integer>> switchList = new ArrayList<>();
+
+		for (int i = 0; i < N; i++) {
+			st = new StringTokenizer(br.readLine(), " ");
+			int num = Integer.parseInt(st.nextToken());
+			List<Integer> list = new ArrayList<>();
+
+			for (int j = 0; j < num; j++) {
+				Integer object = Integer.valueOf(st.nextToken());
+				list.add(object);
+				arrSet[object]++;
 			}
-			dp[i+1]=Math.max(dp[i+1],dp[i]);
-
+			switchList.add(list);
 		}
-		System.out.println(dp[Case]);
-	}
 
+		// 초과된 번호
+		List<Integer> arr = new ArrayList<>();
+
+		for (int i = 1; i < arrSet.length; i++) {
+			if (arrSet[i] > 1) {
+				arr.add(i);
+			}
+		}
+
+		for (List<Integer> integers : switchList) {
+			boolean flag = true;
+
+			for (Integer integer : integers) {
+				if (!arr.contains(integer)) {
+					flag = false;
+					break;
+				}
+			}
+
+			if (flag) {
+				result = 1;
+				break;
+			}
+		}
+
+		System.out.print(result);
+	}
 }

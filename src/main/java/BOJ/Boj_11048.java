@@ -8,7 +8,7 @@ import java.util.StringTokenizer;
 public class Boj_11048 {
 	public static void main(String[] args) throws IOException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringTokenizer st = new StringTokenizer(br.readLine());
+		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 
 		int row = Integer.parseInt(st.nextToken());
 		int col = Integer.parseInt(st.nextToken());

@@ -1,7 +1,11 @@
-import java.io.*;
+package BOJ;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Arrays;
 
-public class Main {
+public class Boj_1309 {
 
 	static int N;
 	static int[][] dp;

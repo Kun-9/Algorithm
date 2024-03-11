@@ -1,106 +1,158 @@
 import java.io.*;
+import java.util.*;
 
 public class Main {
 
-	static Character currentChar = null;
-	static int cnt = 0;
-	static int max = 0;
-	static boolean flag = false;
-	static int N;
-	static char[][] board;
-
 	public static void main(String[] args) throws IOException{
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		N = Integer.parseInt(br.readLine());
 
-		board = new char[N][N];
+		String[] str = {
+				"team_name : MyTeam" +
+				" application_name : YourApp" +
+				" error_level : info" +
+				" message  : Index"
+		};
+		String[] arr = {"team_name", "application_name", "error_level", "message"};
+		int len = str.length;
 
-		for (int i = 0; i < N; i++) {
-			String str = br.readLine();
-			for (int j = 0; j < N; j++) {
-				char c = str.charAt(j);
-				board[i][j] = c;
+		String target;
+		int cnt = 0;
+
+		for (int i = 0; i < len; i++) {
+
+			boolean flag = false;
+			target = str[i];
+
+			int logLen = 0;
+			int beforeLen = target.length();
+
+			StringTokenizer st = new StringTokenizer(target, " ");
+
+			if (st.countTokens() != 12 || target.length() > 100) {
+				cnt++;
+				continue;
 			}
-		}
 
-		// 최초 상태 최댓값
-		for (int i = 0; i < N; i++) {
-			scan(0, i);
-			scan(1, i);
-		}
+			loop:
+			for (int j = 0; j < 4; j++) {
+				String head = st.nextToken();
+				String mid = st.nextToken();
+				String content = st.nextToken();
 
-		loop:
-		for (int i = 0; i < N; i++) {
-			for (int j = 0; j < N; j++) {
-				// 수평 교환
-				if (j + 1 < N && board[i][j] != board[i][j + 1]) {
-					swap(i, j, i, j + 1);
-					scan(0, i);
-					scan(1, j);
-					scan(1, j + 1);
-					swap(i, j, i, j + 1);
+				logLen += head.length();
+				logLen += content.length();
+
+				if (!mid.equals(":")) {
+					flag = true;
+					break;
 				}
 
-				// 수직 교환
-				if (i + 1 < N && board[i][j] != board[i + 1][j]) {
-					swap(i, j, i + 1, j);
-					scan(1, j);
-					scan(0, i);
-					scan(0, i + 1);
-					swap(i, j, i + 1, j);
+				if (!arr[j].equals(head)) {
+					flag = true;
+					break;
+				} else {
+					for (char c : content.toCharArray()) {
+						if (!((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))) {
+							flag = true;
+							break loop;
+						}
+					}
 				}
-
-				if (flag) break loop;
-			}
-		}
-
-
-		System.out.println(max);
-	}
-
-	private static void swap(int x, int y, int tx, int ty) {
-		char temp = board[x][y];
-		board[x][y] = board[tx][ty];
-		board[tx][ty] = temp;
-	}
-
-	static private boolean isCorrect(char target) {
-		return currentChar == null || currentChar == target;
-	}
-
-	static private void reset() {
-		cnt = 0;
-		currentChar = null;
-	}
-
-	static private void scan(int type, int num) {
-		for (int i = 0; i < N; i++) {
-			if (flag) return;
-
-			char target;
-			if (type == 0) {
-				target = board[num][i];
-			} else {
-				target = board[i][num];
 			}
 
-			boolean result = isCorrect(target);
-			if (!result) {
-				updateMax();
-			}
+			if (beforeLen - logLen != 15) flag = true;
 
-			currentChar = target;
-			cnt++;
+			if (flag) cnt++;
+
+
+
+			System.out.println("beforeLen = " + beforeLen);
+			System.out.println("logLen = " + logLen);
 		}
 
-		updateMax();
+		System.out.println(cnt);
 	}
 
-	private static void updateMax() {
-		if (cnt == N) {
-			flag = true;
-		}
-		max = Math.max(cnt, max);
-		reset();
-	}
 }
+
+//import java.io.*;
+//import java.util.*;
+//
+//public class Main {
+//
+//	static int maxValue;
+//	static List<Event> eventList;
+//	static int remainMoney;
+//	static int[] check;
+//
+//	public static void main(String[] args) throws IOException{
+//
+//		String[] events = {"10 x2", "5 +100", "20 +200", "100 x3", "80 x2"};
+//		check = new int[events.length];
+//		remainMoney = 100;
+//
+//		eventList = new ArrayList<>();
+//
+//		for (int i = 0; i < events.length; i++) {
+//			String target = events[i];
+//			StringTokenizer st = new StringTokenizer(target, " ");
+//			int cost = Integer.parseInt(st.nextToken());
+//			String howAndValue = st.nextToken();
+//			String how = howAndValue.substring(0, 1);
+//			int value = Integer.parseInt(howAndValue.substring(1));
+//
+//			eventList.add(new Event(i, cost, how, value));
+//		}
+//
+//		DFS(500);
+//
+//
+//		System.out.println(maxValue);
+//	}
+//
+//	private static void DFS(int eventMoney) {
+//
+//		System.out.println("remainMoney : " + remainMoney);
+//		System.out.print(eventMoney + " ");
+//
+////		List<Integer> integers = map.getOrDefault(r, new ArrayList<>());
+//		maxValue = Math.max(maxValue, eventMoney);
+//
+//
+//		for (Event event : eventList) {
+//
+//			int cost = event.cost;
+//			if (remainMoney < cost || check[event.number] == 1) continue;
+//
+//			remainMoney -= cost;
+//			check[event.number] = 1;
+//
+//			DFS(event.calculate(eventMoney));
+//
+//			remainMoney += cost;
+//			check[event.number] = 0;
+//		}
+//	}
+//
+//	private static class Event {
+//		private int number;
+//		private int cost;
+//		private String how;
+//		private int value;
+//
+//		public Event(int number, int cost, String how, int value) {
+//			this.number = number;
+//			this.cost = cost;
+//			this.how = how;
+//			this.value = value;
+//		}
+//
+//		public int calculate(int money) {
+//
+//			if (how.equals("+")) {
+//				return money + value;
+//			} else {
+//				return money * value;
+//			}
+//		}
+//	}
+//}

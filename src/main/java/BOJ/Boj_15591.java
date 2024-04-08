@@ -1,7 +1,11 @@
-import java.io.*;
+package BOJ;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.*;
 
-public class Main {
+public class Boj_15591 {
 
 	static int[] answer;
 	static int N, Q;

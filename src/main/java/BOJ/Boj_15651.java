@@ -1,7 +1,9 @@
+package BOJ;
+
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class Boj_15651 {
 
 	static int M;
 	static int N;
@@ -9,19 +11,14 @@ public class Main {
 	static int[] arr;
 	static StringBuilder sb = new StringBuilder();
 
-	private static void input() {
+	public static void main(String[] args) throws IOException {
+
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 
 		N = Integer.parseInt(st.nextToken());
 		M = Integer.parseInt(st.nextToken());
 		arr = new int[M];
-	}
-
-	public static void main(String[] args) throws IOException {
-
-		input();
-
 
 		// 1 ~ N까지의 자연수 중 M개를 고른 수열
 		// 같은 수를 여러번 골라도 됨
@@ -32,8 +29,6 @@ public class Main {
 
 
 	}
-
-
 
 	private static void fun(int index) {
 		if (index == M) {

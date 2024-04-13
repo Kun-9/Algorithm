@@ -1,6 +1,10 @@
-import java.io.*;
+package BOJ;
 
-public class Main {
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Boj_9663 {
 
 	static int N;
 	static int[] board;

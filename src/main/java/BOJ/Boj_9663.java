@@ -35,9 +35,7 @@ public class Boj_9663 {
 		// row
 
 		if (row == N) {
-			if (check()) {
-				result++;
-			}
+			result++;
 			return;
 		}
 

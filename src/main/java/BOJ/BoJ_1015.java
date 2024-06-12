@@ -1,7 +1,12 @@
-import java.io.*;
-import java.util.*;
+package BOJ;
 
-public class Main {
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.StringTokenizer;
+
+public class BoJ_1015 {
 
 	static int N;
 	static int[] B, A, P, check;

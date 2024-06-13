@@ -1,7 +1,11 @@
-import java.io.*;
-import java.util.*;
+package BOJ;
 
-public class Main {
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.TreeMap;
+
+public class Boj_11652 {
 
 	static int N;
 	static int max = -1;

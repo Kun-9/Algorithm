@@ -38,7 +38,7 @@ public class Boj_15970 {
 	public static void solution() {
 		Collections.sort(list);
 
-		Node tempNode = null;
+		Node tempNode;
 
 		for (int i = 0; i < N; i++) {
 			Node currentNode = list.get(i);
@@ -78,7 +78,6 @@ public class Boj_15970 {
 		private int color;
 		private int pos;
 
-
 		public Node(int color, int pos) {
 			this.color = color;
 			this.pos = pos;
@@ -88,16 +87,8 @@ public class Boj_15970 {
 			return color;
 		}
 
-		public void setColor(int color) {
-			this.color = color;
-		}
-
 		public int getPos() {
 			return pos;
-		}
-
-		public void setPos(int pos) {
-			this.pos = pos;
 		}
 
 
@@ -108,14 +99,6 @@ public class Boj_15970 {
 			}
 
 			return pos - node.pos;
-		}
-
-		@Override
-		public String toString() {
-			return "Node{" +
-					"color=" + color +
-					", pos=" + pos +
-					'}';
 		}
 	}
 }
